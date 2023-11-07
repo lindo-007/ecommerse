@@ -6,13 +6,13 @@ import Products from "../components/Products";
 
 export default function Home() {
   return (
-    <Shop>
+    <HomeContainer>
       <Categories/>
       <Products/>
-    </Shop>
+    </HomeContainer>
   );
 }
-const Shop = styled.section`
+const HomeContainer = styled.section`
 display: flex;
 align-items: center;
 justify-content: space-between;

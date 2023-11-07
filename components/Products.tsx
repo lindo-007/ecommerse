@@ -1,11 +1,16 @@
 import React from 'react'
+import { styled } from 'styled-components'
 
 function Procucts() {
   return (
-    <section>
+    <ProcuctsContainer>
     products
-  </section>
+  </ProcuctsContainer>
   )
 }
+
+const ProcuctsContainer = styled.section`
+
+`
 
 export default Procucts

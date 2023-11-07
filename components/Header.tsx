@@ -4,25 +4,32 @@ import styled from "styled-components";
 
 function Header() {
   return (
-    <MainHeader>
+    <HeaderContainer>
+      <Image
+        src="/open-menu.svg"
+        width={30}
+        height={30}
+        alt="Picture of the menu icon"
+      />
       <Image
         src="/vercel.svg"
         width={90}
         height={90}
-        alt="Picture of the author"
+        alt="Picture of the logo"
       />
       <Image
         src="/shopping_cart.svg"
-        width={50}
-        height={50}
-        alt="Picture of the author"
+        width={30}
+        height={30}
+        alt="Picture of the shopping cart"
       />
-    </MainHeader>
+    </HeaderContainer>
   );
 }
 
-const MainHeader = styled.header`
+const HeaderContainer = styled.header`
 display: flex;
 justify-content: space-between;
+align-items:center;
 `;
 export default Header;
