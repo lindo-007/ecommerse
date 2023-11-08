@@ -1,16 +1,39 @@
-import React from 'react'
-import { styled } from 'styled-components'
+import React from "react";
+import { styled } from "styled-components";
+import { Product, Products } from "../types/products.type";
+import ProductCard from "./ProductCard";
 
-function Procucts() {
+type ProductProps = {
+  products: Products;
+};
+function DisplayProducts({ products }: ProductProps) {
+  products.length;
   return (
-    <ProcuctsContainer>
-    products
-  </ProcuctsContainer>
-  )
+    <ProductsContainer>
+      <h2>products</h2>
+
+      <ProductsSection>
+        {products.map((product) => (
+          <ProductCard product={product} key={product.id}></ProductCard>
+        ))}
+      </ProductsSection>
+    </ProductsContainer>
+  );
 }
 
-const ProcuctsContainer = styled.section`
+const ProductsSection = styled.section`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
-`
+const ProductsContainer = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 90%;
+`;
 
-export default Procucts
+export default DisplayProducts;
