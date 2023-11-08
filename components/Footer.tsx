@@ -8,7 +8,6 @@ function Footer() {
 
 
 const PageFooter = styled.footer`
-  position: absolute;
-  bottom: 0;
+  margin-top: auto;
 `
 export default Footer

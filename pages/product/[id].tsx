@@ -70,6 +70,10 @@ const ProductWrapper = styled.section`
   margin: auto;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 570px) {
+		flex-direction: column;
+	}
 `;
 
 const ProductText = styled.p`
