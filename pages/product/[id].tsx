@@ -4,7 +4,9 @@ import styled from "styled-components";
 import Image from "next/image";
 import { InferGetStaticPropsType } from "next";
 import { Product } from "../../types/products.type";
-
+import type { Dispatch } from 'redux'
+import { useDispatch } from 'react-redux'
+import { ADD_TO_CART } from "../../store/cart";
 export const getStaticPaths = async () => {
   return {
     paths: [
@@ -41,6 +43,9 @@ export const getStaticProps = async ({ params }) => {
 function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
 
+  const dispatch: Dispatch = useDispatch()
+
+
   return (
     <ProductWrapper>
       <figure>
@@ -59,7 +64,7 @@ function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
         <ProductText>R{product.price}</ProductText>
         <ProductText>{product.rating.rate} stars</ProductText>
         <ProductText>{product.rating.count} reviews</ProductText>
-        <button>add to cart</button>
+        <button onClick={() => dispatch({ type: ADD_TO_CART,payload:product })}>add to cart</button>
       </figcaption>
     </ProductWrapper>
   );
