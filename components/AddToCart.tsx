@@ -40,7 +40,7 @@ const Cart = styled.div`
 `;
 
 const ActionButton = styled.button`
-  margin: 0 0.5rem;
+  margin: 0.5 0.5rem;
   padding: 0.5rem;
   font-size: 1rem;
   background-color: #4caf50;
