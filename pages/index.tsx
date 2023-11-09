@@ -16,7 +16,6 @@ export default function Home({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <HomeContainer>
-      {/* <Categories /> */}
       <DisplayProducts products={products} />
     </HomeContainer>
   );

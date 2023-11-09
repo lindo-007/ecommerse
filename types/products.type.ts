@@ -9,6 +9,9 @@ export type Product = {
     rate: number;
     count: number;
   };
+  cartQuantity?: number;
 };
 
+
 export type Products = Product[];
+

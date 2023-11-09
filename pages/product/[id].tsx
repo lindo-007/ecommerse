@@ -1,12 +1,9 @@
-import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { InferGetStaticPropsType } from "next";
 import { Product } from "../../types/products.type";
-import type { Dispatch } from 'redux'
-import { useDispatch } from 'react-redux'
-import { ADD_TO_CART } from "../../store/cart";
+import AddToCart from "../../components/AddToCart";
 export const getStaticPaths = async () => {
   return {
     paths: [
@@ -41,11 +38,6 @@ export const getStaticProps = async ({ params }) => {
 };
 //make global price
 function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const router = useRouter();
-
-  const dispatch: Dispatch = useDispatch()
-
-
   return (
     <ProductWrapper>
       <figure>
@@ -64,7 +56,7 @@ function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
         <ProductText>R{product.price}</ProductText>
         <ProductText>{product.rating.rate} stars</ProductText>
         <ProductText>{product.rating.count} reviews</ProductText>
-        <button onClick={() => dispatch({ type: ADD_TO_CART,payload:product })}>add to cart</button>
+        <AddToCart product={product}></AddToCart>
       </figcaption>
     </ProductWrapper>
   );
@@ -77,8 +69,8 @@ const ProductWrapper = styled.section`
   justify-content: space-between;
 
   @media (max-width: 570px) {
-		flex-direction: column;
-	}
+    flex-direction: column;
+  }
 `;
 
 const ProductText = styled.p`
