@@ -34,5 +34,11 @@ const ProductContainer = styled.figure`
   flex-direction: column;
   max-width: 90%;
   align-items: center;
-  overflow-x: scroll;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
 `;
