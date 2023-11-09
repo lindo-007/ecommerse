@@ -19,7 +19,7 @@ export default function CartItem({ product }: CartItemProps) {
         alt={`picture of ${product?.title}`}
       />
       <p>{product.cartQuantity}</p>
-      <p>{product?.price}</p>
+      <p>R{product?.price}</p>
       <AddToCart product={product}></AddToCart>
     </CartItemWrapper>
   );

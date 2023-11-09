@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import styled from "styled-components";
@@ -9,36 +8,48 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from "../store/cart";
 type AddToCartProps = {
   product: Product;
 };
+
 export default function AddToCart({ product }: AddToCartProps) {
   const dispatch: Dispatch = useDispatch();
-
   const cartItems: Products = useSelector((store: Store) => store.cart.items);
 
-  function isInCart(product: Product) {
-    return cartItems.filter((item) => item?.id === product.id).length > 0;
-  }
+  const isInCart = cartItems.some((item) => item?.id === product.id);
 
-  function handleAddProduct(product: Product) {
-    dispatch({ type: ADD_TO_CART, payload: { product: product } });
-  }
+  const handleAddToCart = () => {
+    dispatch({ type: ADD_TO_CART, payload: { product } });
+  };
 
-  function handleRemoveProduct(product: Product) {
-    dispatch({
-      type: REMOVE_FROM_CART,
-      payload: { product: product },
-    });
-  }
+  const handleRemoveFromCart = () => {
+    dispatch({ type: REMOVE_FROM_CART, payload: { product } });
+  };
+
   return (
     <Cart>
-      <button onClick={() => handleAddProduct(product)}>+</button>
-      add to cart
-      <button
-        disabled={!isInCart(product)}
-        onClick={() => handleRemoveProduct(product)}
-      >
+      <ActionButton onClick={handleAddToCart}>+</ActionButton>
+      <span>Add to Cart</span>
+      <ActionButton onClick={handleRemoveFromCart} disabled={!isInCart}>
         -
-      </button>
+      </ActionButton>
     </Cart>
   );
 }
-const Cart = styled.div``;
+
+const Cart = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ActionButton = styled.button`
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+`;

@@ -40,24 +40,24 @@ export const getStaticProps = async ({ params }) => {
 function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <ProductWrapper>
-      <figure>
+      <ProductImage>
         <Image
           src={product.image}
           width={200}
           height={200}
-          alt={`picture of ${product.title}`}
+          alt={`Product image of ${product.title}`}
         />
-      </figure>
-      <figcaption>
+      </ProductImage>
+      <ProductDetails>
         <h2>{product.title}</h2>
-        <ProductText>{product.title}</ProductText>
         <ProductText>{product.category}</ProductText>
         <ProductText>{product.description}</ProductText>
         <ProductText>R{product.price}</ProductText>
-        <ProductText>{product.rating.rate} stars</ProductText>
-        <ProductText>{product.rating.count} reviews</ProductText>
+        <ProductText>
+          {product.rating.rate} stars | {product.rating.count} reviews
+        </ProductText>
         <AddToCart product={product}></AddToCart>
-      </figcaption>
+      </ProductDetails>
     </ProductWrapper>
   );
 }
@@ -71,6 +71,20 @@ const ProductWrapper = styled.section`
   @media (max-width: 570px) {
     flex-direction: column;
   }
+`;
+
+const ProductImage = styled.figure`
+  flex: 1;
+  margin-right: 2rem;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+
+const ProductDetails = styled.figcaption`
+  flex: 2;
 `;
 
 const ProductText = styled.p`

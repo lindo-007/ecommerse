@@ -1,20 +1,19 @@
 import React from "react";
-import { styled } from "styled-components";
-import { Product, Products } from "../types/products.type";
+import styled from "styled-components";
+import { Products } from "../types/products.type";
 import ProductCard from "./ProductCard";
 
 type ProductProps = {
   products: Products;
 };
+
 function DisplayProducts({ products }: ProductProps) {
-  products.length;
   return (
     <ProductsContainer>
-      <h2>products</h2>
-
+      <ProductsHeader>Products</ProductsHeader>
       <ProductsSection>
         {products.map((product) => (
-          <ProductCard product={product} key={product.id}></ProductCard>
+          <ProductCard product={product} key={product.id} />
         ))}
       </ProductsSection>
     </ProductsContainer>
@@ -34,6 +33,11 @@ const ProductsContainer = styled.section`
   justify-content: center;
   flex-direction: column;
   max-width: 90%;
+  padding: 2rem;
+`;
+
+const ProductsHeader = styled.h2`
+  text-transform: capitalize;
 `;
 
 export default DisplayProducts;
