@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Product } from "../../types/products.type";
 import CartItem from "../../components/CartItem";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Store } from "../../types/store.type";
 import styled from "styled-components";
 import { Dispatch } from "redux";
@@ -11,7 +11,7 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from "../../store/cart";
 const currency = "R";
 
 export default function Cart() {
-  const {items} = useSelector((store: Store) => store.cart,shallowEqual);
+  const { items } = useSelector((store: Store) => store.cart);
   const [totalCost, setTotalCost] = useState(0);
 
   useEffect(() => {
@@ -30,15 +30,11 @@ export default function Cart() {
       dispatch({ type: ADD_TO_CART, payload: { product } });
     }
 
-
-
-    const cost = items.reduce((total, item) => {
+    const cost = items.reduce((total: number, item: Product) => {
       return total + Number(item.price) * Number(item.cartQuantity);
     }, 0);
 
-    console.log(items[0].cartQuantity);
-    
-    setTotalCost(()=>cost);
+    setTotalCost(() => cost);
   }
 
   return (

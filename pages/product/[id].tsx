@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
 
   for (let i = 1; i <= numberOfProducts; i++) {
     paths.push({
-      params: { id: i },
+      params: { id: `${i}` },
     });
   }
 
@@ -37,8 +37,7 @@ export const getStaticProps = async ({ params }) => {
   const product: Product = await res.json();
   return { props: { product } };
 };
-
-
+//make global price
 function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <ProductWrapper>

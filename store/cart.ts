@@ -12,13 +12,16 @@ function addToCart(state: CartState, product: Product) {
   const existingItem = state.items.find((item) => item?.id === product.id);
 
   if (existingItem) {
+    const newData = state.items.map((item) =>
+    item?.id === product.id
+    ? { ...item, cartQuantity: item.cartQuantity + 1 }
+    : item
+    );
+    Object.assign(state.items, newData);
+
     return {
       ...state,
-      items: state.items.map((item) =>
-        item?.id === product.id
-          ? { ...item, cartQuantity: item.cartQuantity + 1 }
-          : item
-      ),
+      items: newData,
     };
   }
 
