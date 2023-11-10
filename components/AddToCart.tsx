@@ -11,9 +11,6 @@ type AddToCartProps = {
 
 export default function AddToCart({ product }: AddToCartProps) {
   const dispatch: Dispatch = useDispatch();
-  const cartItems: Products = useSelector((store: Store) => store.cart.items);
-
-  const isInCart = cartItems.some((item) => item?.id === product.id);
 
   const handleAddToCart = () => {
     dispatch({ type: ADD_TO_CART, payload: { product } });
@@ -26,8 +23,7 @@ export default function AddToCart({ product }: AddToCartProps) {
   return (
     <Cart>
       <ActionButton onClick={handleAddToCart}>+</ActionButton>
-      <span>Add to Cart</span>
-      <ActionButton onClick={handleRemoveFromCart} disabled={!isInCart}>
+      <ActionButton onClick={handleRemoveFromCart} >
         -
       </ActionButton>
     </Cart>
@@ -40,8 +36,8 @@ const Cart = styled.div`
 `;
 
 const ActionButton = styled.button`
-  margin: 0.5 0.5rem;
-  padding: 0.5rem;
+  margin: 1rem;
+  padding: 0.6rem 1.5rem;
   font-size: 1rem;
   background-color: #4caf50;
   color: #fff;

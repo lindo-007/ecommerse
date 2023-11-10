@@ -13,7 +13,7 @@ function Layout({ children }) {
 }
 
 const LayoutWrapper = styled.section`
-  min-height:99.5vh ;
+  min-height:98.7vh ;
   display: flex;
   flex-direction: column;
   align-items: space-between;
