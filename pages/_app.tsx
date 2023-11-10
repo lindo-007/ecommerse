@@ -1,14 +1,17 @@
 import { AppProps } from "next/app";
 import Layout from "../components/layout";
 import { Provider } from "react-redux";
-import store from "../store";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "../store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <PersistGate loading={null} persistor={persistor}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </PersistGate>
     </Provider>
   );
 }

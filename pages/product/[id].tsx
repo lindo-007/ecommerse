@@ -4,28 +4,29 @@ import Image from "next/image";
 import { InferGetStaticPropsType } from "next";
 import { Product } from "../../types/products.type";
 import AddToCart from "../../components/AddToCart";
+
+const rooturl = "https://fakestoreapi.com";
+const ProductsEndpoint = "/products";
+const numberOfProducts = 20;
+const currency = "R";
+
+const fetcher = async (url: string) => {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data;
+};
+
 export const getStaticPaths = async () => {
+  const paths = [];
+
+  for (let i = 1; i <= numberOfProducts; i++) {
+    paths.push({
+      params: { id: i },
+    });
+  }
+
   return {
-    paths: [
-      {
-        params: { id: "1" },
-      },
-      {
-        params: { id: "2" },
-      },
-      {
-        params: { id: "3" },
-      },
-      {
-        params: { id: "4" },
-      },
-      {
-        params: { id: "5" },
-      },
-      {
-        params: { id: "6" },
-      },
-    ],
+    paths,
     fallback: true,
   };
 };
@@ -36,7 +37,8 @@ export const getStaticProps = async ({ params }) => {
   const product: Product = await res.json();
   return { props: { product } };
 };
-//make global price
+
+
 function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <ProductWrapper>
@@ -52,7 +54,10 @@ function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
         <h2>{product.title}</h2>
         <ProductText>{product.category}</ProductText>
         <ProductText>{product.description}</ProductText>
-        <ProductText>R{product.price}</ProductText>
+        <ProductText>
+          {currency}
+          {product.price}
+        </ProductText>
         <ProductText>
           {product.rating.rate} stars | {product.rating.count} reviews
         </ProductText>
