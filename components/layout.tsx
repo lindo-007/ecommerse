@@ -4,16 +4,20 @@ import styled from "styled-components";
 
 function Layout({ children }) {
   return (
-    <LayoutWrapper>
+    <LayoutContainer>
       <Header />
-      <main>{children}</main>
+      <MainContainer>{children}</MainContainer>
       <Footer />
-    </LayoutWrapper>
+    </LayoutContainer>
   );
 }
 
-const LayoutWrapper = styled.section`
-  min-height:98.7vh ;
+const MainContainer = styled.main`
+  margin: 2rem;
+`;
+
+const LayoutContainer = styled.section`
+  min-height: 98.7vh;
   display: flex;
   flex-direction: column;
   align-items: space-between;
