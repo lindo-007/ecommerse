@@ -7,35 +7,27 @@ function Header() {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <MenuIcon>
-        <Image
-        src="/open-menu.svg"
-        width={30}
-        height={30}
-        alt="Picture of the menu icon"
-      />
-        </MenuIcon>
-        <Logo>
+        <Home>
           <Link href="/">
             <a>
-            <Image
-            src="/vercel.svg"
-            width={90}
-            height={90}
-            alt="Picture of the logo"
-          />
+              <Image
+                src="/home.svg"
+                width={30}
+                height={30}
+                alt="Picture of the Home"
+              />
             </a>
           </Link>
-        </Logo>
+        </Home>
         <CartIcon>
           <Link href="/cart">
             <a>
-            <Image
-            src="/shopping_cart.svg"
-            width={30}
-            height={30}
-            alt="Picture of the shopping cart"
-          />
+              <Image
+                src="/shopping_cart.svg"
+                width={30}
+                height={30}
+                alt="Picture of the shopping cart"
+              />
             </a>
           </Link>
         </CartIcon>
@@ -58,16 +50,8 @@ const HeaderContent = styled.div`
   align-items: center;
 `;
 
-const MenuIcon = styled.div`
+const Home = styled.div``;
 
-`;
-
-const Logo = styled.div`
-
-`;
-
-const CartIcon = styled.div`
-
-`;
+const CartIcon = styled.div``;
 
 export default Header;

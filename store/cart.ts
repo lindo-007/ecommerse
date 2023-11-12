@@ -32,15 +32,19 @@ function addToCart(state: CartState, product: Product) {
 }
 
 function removeFromCart(state: CartState, product: Product) {
+  const newData = state.items
+  .map((item) =>
+    item?.id === product.id
+      ? { ...item, cartQuantity: item.cartQuantity - 1 }
+      : item
+  )
+  .filter((item) => item !== undefined && item.cartQuantity !== 0);
+
+  Object.assign(state.items, newData);
+
   return {
     ...state,
-    items: state.items
-      .map((item) =>
-        item?.id === product.id
-          ? { ...item, cartQuantity: item.cartQuantity - 1 }
-          : item
-      )
-      .filter((item) => item !== undefined && item.cartQuantity !== 0),
+    items: newData,
   };
 }
 

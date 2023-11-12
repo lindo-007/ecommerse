@@ -1,5 +1,5 @@
 import React from "react";
-import { Product, Products } from "../types/products.type";
+import { Product } from "../types/products.type";
 import styled from "styled-components";
 import Image from "next/image";
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../store/cart";
@@ -11,16 +11,18 @@ type CartItemProps = {
 
 export default function CartItem({ product, handleChange }: CartItemProps) {
   return (
-    <CartItemWrapper>
+    <CartItemContainer>
       <h3>{product?.title.slice(0, 47)}</h3>
-      <Image
-        src={product?.image}
-        width={50}
-        height={50}
-        alt={`picture of ${product?.title}`}
-      />
-      <p>{product.cartQuantity}</p>
-      <p>R{product?.price}</p>
+      <CartItemContent>
+        <Image
+          src={product?.image}
+          width={50}
+          height={50}
+          alt={`picture of ${product?.title}`}
+        />
+        <p>{product.cartQuantity}</p>
+        <p>R{product?.price}</p>
+      </CartItemContent>
       <ChangeQuantity>
         <ActionButton onClick={() => handleChange(ADD_TO_CART, product)}>
           +
@@ -29,11 +31,19 @@ export default function CartItem({ product, handleChange }: CartItemProps) {
           -
         </ActionButton>
       </ChangeQuantity>
-    </CartItemWrapper>
+    </CartItemContainer>
   );
 }
 
-const CartItemWrapper = styled.div`
+const CartItemContent = styled.div`
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 80%;
+`;
+
+const CartItemContainer = styled.div`
   padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
