@@ -33,22 +33,20 @@ function Footer() {
 const FooterContainer = styled.footer`
   background-color: #f5f5f5;
   color: #333;
-  justify-self: flex-end;
 `;
 
 const FooterContent = styled.div`
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 1rem;
   display: flex;
   justify-content: space-around;
 
-  @media (max-width: 570px) {
+  @media (max-width: 700px) {
     flex-direction: column;
   }
 `;
 
 const Section = styled.div`
-
   h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;

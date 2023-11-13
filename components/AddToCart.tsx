@@ -3,24 +3,38 @@ import { Dispatch } from "redux";
 import styled from "styled-components";
 import { Product } from "../types/products.type";
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../store/cart";
-import { CartState } from "../types/store.type";
+import { Store } from "../types/store.type";
+import { useEffect, useState } from "react";
 
 type AddToCartProps = {
   product: Product;
 };
 
+const cartLimit = 20;
+
 export default function AddToCart({ product }: AddToCartProps) {
   const dispatch: Dispatch = useDispatch();
-  const items = useSelector((state: CartState) => state.items);
+  const items = useSelector((store: Store) => store.cart.items);
+  const [isRemoveDisabled, setIsRemoveDisabled] = useState(true);
+  const [isAddDisabled, setIsAddDisabled] = useState(true);
 
-  function isInCart() {
-    const cartItems = items.filter((item) => item.id === product.id);
 
-    const isInCart = cartItems.length > 0;
-    console.log(cartItems, isInCart);
+  function countItemsInCart() {
+    return items.reduce((total,item)=> {
+      return total + item.cartQuantity
+    },0)
 
-    return isInCart;
+    
   }
+  useEffect(() => {
+    function isInCart(product: Product) {
+      return items.filter((item) => item.id === product.id).length > 0;
+    }
+
+    setIsRemoveDisabled(!isInCart(product));
+    
+    setIsAddDisabled(countItemsInCart() >= 20);
+  }, [items, product]);
 
   const handleAddToCart = () => {
     dispatch({ type: ADD_TO_CART, payload: { product } });
@@ -32,8 +46,10 @@ export default function AddToCart({ product }: AddToCartProps) {
 
   return (
     <Cart>
-      <ActionButton onClick={handleAddToCart}>+</ActionButton>
-      <ActionButton disabled={!isInCart} onClick={handleRemoveFromCart}>
+      <ActionButton disabled={isAddDisabled} onClick={handleAddToCart}>
+        +
+      </ActionButton>
+      <ActionButton disabled={isRemoveDisabled} onClick={handleRemoveFromCart}>
         -
       </ActionButton>
     </Cart>

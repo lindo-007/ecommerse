@@ -13,16 +13,17 @@ function Layout({ children }) {
 }
 
 const MainContainer = styled.main`
+  display: flex;
   margin: 2rem;
   min-height: 68vh;
-  
+  flex: 1;
 `;
 
 const LayoutContainer = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: space-between;
-  justify-content: flex-start;
+  justify-content: space-between;
+  min-height: 98.8vh;
 `;
 
 export default Layout;

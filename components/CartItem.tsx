@@ -2,14 +2,13 @@ import React from "react";
 import { Product } from "../types/products.type";
 import styled from "styled-components";
 import Image from "next/image";
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../store/cart";
+import AddToCart from "./AddToCart";
 
 type CartItemProps = {
   product: Product;
-  handleChange: (action: string, product: Product) => void;
 };
 
-export default function CartItem({ product, handleChange }: CartItemProps) {
+export default function CartItem({ product }: CartItemProps) {
   return (
     <CartItemContainer>
       <h3>{product?.title.slice(0, 47)}</h3>
@@ -23,14 +22,7 @@ export default function CartItem({ product, handleChange }: CartItemProps) {
         <p>{product.cartQuantity}</p>
         <p>R{product?.price}</p>
       </CartItemContent>
-      <ChangeQuantity>
-        <ActionButton onClick={() => handleChange(ADD_TO_CART, product)}>
-          +
-        </ActionButton>
-        <ActionButton onClick={() => handleChange(REMOVE_FROM_CART, product)}>
-          -
-        </ActionButton>
-      </ChangeQuantity>
+      <AddToCart product={product} />
     </CartItemContainer>
   );
 }

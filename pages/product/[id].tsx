@@ -69,12 +69,10 @@ function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
 }
 
 const ProductContainer = styled.section`
-  max-width: 90%;
-  min-height: 85%;
-  margin: auto;
+  max-width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1;
+  margin: auto;
 `;
 
 const ProductContent = styled.section`
@@ -82,8 +80,9 @@ const ProductContent = styled.section`
   align-items: center;
   justify-content: center;
   min-height: 85%;
+  margin: auto;
 
-  @media (max-width: 570px) {
+  @media (max-width: 700px) {
     flex-direction: column;
   }
 `;
