@@ -14,12 +14,11 @@ function Layout({ children }) {
 
 const MainContainer = styled.main`
   margin: 2rem;
-  min-height: 75vh;
+  min-height: 68vh;
   
 `;
 
 const LayoutContainer = styled.section`
-  min-height: 98.7vh;
   display: flex;
   flex-direction: column;
   align-items: space-between;

@@ -11,8 +11,7 @@ type AddToCartProps = {
 
 export default function AddToCart({ product }: AddToCartProps) {
   const dispatch: Dispatch = useDispatch();
-
-  const { items } = useSelector((state: CartState) => state);
+  const items = useSelector((state: CartState) => state.items);
 
   function isInCart() {
     const cartItems = items.filter((item) => item.id === product.id);

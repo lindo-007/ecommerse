@@ -75,17 +75,17 @@ const ProductContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 570px) {
-    flex-direction: column;
-  }
 `;
 
 const ProductContent = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100%s;
+  min-height: 85%;
+
+  @media (max-width: 570px) {
+    flex-direction: column;
+  }
 `;
 
 const ProductImage = styled.figure`
