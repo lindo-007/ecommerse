@@ -54,6 +54,7 @@ const Section = styled.div`
 
   p {
     margin: 0.5rem 0;
+    color: #154c79;
   }
 
   ul {
@@ -66,7 +67,7 @@ const Section = styled.div`
     }
 
     a {
-      color: #333;
+      color: #154c79;
       text-decoration: none;
       &:hover {
         text-decoration: underline;
@@ -79,6 +80,7 @@ const Copyright = styled.p`
   text-align: center;
   margin-top: 2rem;
   font-size: 0.8rem;
+  color:#e28743;
 `;
 
 export default Footer;

@@ -18,21 +18,17 @@ export default function AddToCart({ product }: AddToCartProps) {
   const [isRemoveDisabled, setIsRemoveDisabled] = useState(true);
   const [isAddDisabled, setIsAddDisabled] = useState(true);
 
-
-  function countItemsInCart() {
-    return items.reduce((total,item)=> {
-      return total + item.cartQuantity
-    },0)
-
-    
-  }
   useEffect(() => {
     function isInCart(product: Product) {
       return items.filter((item) => item.id === product.id).length > 0;
     }
-
+    function countItemsInCart() {
+      return items.reduce((total, item) => {
+        return total + item.cartQuantity;
+      }, 0);
+    }
     setIsRemoveDisabled(!isInCart(product));
-    
+
     setIsAddDisabled(countItemsInCart() >= 20);
   }, [items, product]);
 

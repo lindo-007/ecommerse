@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+import { AiOutlineHome, AiOutlineShopping } from "react-icons/ai";
 
 function Header() {
   return (
@@ -10,24 +10,14 @@ function Header() {
         <Home>
           <Link href="/">
             <a>
-              <Image
-                src="/home.svg"
-                width={30}
-                height={30}
-                alt="Picture of the Home"
-              />
+              <AiOutlineHome size={"2rem"} color="#e28743" />
             </a>
           </Link>
         </Home>
         <CartIcon>
           <Link href="/cart">
             <a>
-              <Image
-                src="/shopping_cart.svg"
-                width={30}
-                height={30}
-                alt="Picture of the shopping cart"
-              />
+              <AiOutlineShopping size={"2rem"} color="#e28743" />
             </a>
           </Link>
         </CartIcon>

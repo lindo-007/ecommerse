@@ -44,6 +44,8 @@ export default function ProductCard({ product }: ProductCardProps) {
 
 const AddToCartButton = styled.button`
   padding: 0.5rem 1rem;
+  /* color: #e28743; */
+  background-color:#eeeee4;
 `
 const ProductContent = styled.div``;
 
