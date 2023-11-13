@@ -14,6 +14,8 @@ function Layout({ children }) {
 
 const MainContainer = styled.main`
   margin: 2rem;
+  min-height: 75vh;
+  
 `;
 
 const LayoutContainer = styled.section`
@@ -21,7 +23,7 @@ const LayoutContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: space-between;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 export default Layout;

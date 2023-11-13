@@ -38,7 +38,7 @@ export default function Cart() {
   }
 
   return (
-    <CartWrapper>
+    <CartContainer>
       <CartHeader>Cart</CartHeader>
       {items.length === 0 ? (
         <EmptyCartMessage>Nothing here</EmptyCartMessage>
@@ -56,13 +56,14 @@ export default function Cart() {
           </TotalCost>
         </>
       )}
-    </CartWrapper>
+    </CartContainer>
   );
 }
 
-const CartWrapper = styled.section`
+const CartContainer = styled.section`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 `;
 
 const CartHeader = styled.h2`

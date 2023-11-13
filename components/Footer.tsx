@@ -33,6 +33,7 @@ function Footer() {
 const FooterContainer = styled.footer`
   background-color: #f5f5f5;
   color: #333;
+  justify-self: flex-end;
 `;
 
 const FooterContent = styled.div`

@@ -40,41 +40,52 @@ export const getStaticProps = async ({ params }) => {
 //make global price
 function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <ProductWrapper>
-      <ProductImage>
-        <Image
-          src={product.image}
-          width={200}
-          height={200}
-          alt={`Product image of ${product.title}`}
-        />
-      </ProductImage>
-      <ProductDetails>
-        <h2>{product.title}</h2>
-        <ProductText>{product.category}</ProductText>
-        <ProductText>{product.description}</ProductText>
-        <ProductText>
-          {currency}
-          {product.price}
-        </ProductText>
-        <ProductText>
-          {product.rating.rate} stars | {product.rating.count} reviews
-        </ProductText>
-        <AddToCart product={product}></AddToCart>
-      </ProductDetails>
-    </ProductWrapper>
+    <ProductContainer>
+      <ProductContent>
+        <ProductImage>
+          <Image
+            src={product.image}
+            width={200}
+            height={200}
+            alt={`Product image of ${product.title}`}
+          />
+        </ProductImage>
+        <ProductDetails>
+          <h2>{product.title}</h2>
+          <ProductText>{product.category}</ProductText>
+          <ProductText>{product.description}</ProductText>
+          <ProductText>
+            {currency}
+            {product.price}
+          </ProductText>
+          <ProductText>
+            {product.rating.rate} stars | {product.rating.count} reviews
+          </ProductText>
+          <AddToCart product={product}></AddToCart>
+        </ProductDetails>
+      </ProductContent>
+    </ProductContainer>
   );
 }
 
-const ProductWrapper = styled.section`
+const ProductContainer = styled.section`
   max-width: 90%;
+  min-height: 85%;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 570px) {
     flex-direction: column;
   }
+`;
+
+const ProductContent = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%s;
 `;
 
 const ProductImage = styled.figure`
