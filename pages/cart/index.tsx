@@ -20,19 +20,19 @@ export default function Cart() {
   }, [items]);
 
   return (
-    <section>
-      <h2>Cart</h2>
+    <section className="flex flex-col justify-between w-11/12">
+      <h2 className="text-2xl text-blue-300">Cart</h2>
       {items.length === 0 ? (
         <div>Nothing here</div>
       ) : (
-        <>
+        <section className="flex flex-col">
           {items.map((item) => (
             <CartItem key={item?.id} product={item} />
           ))}
           <p>
             Total: {currency} {totalCost.toFixed(2)}
           </p>
-        </>
+        </section>
       )}
     </section>
   );

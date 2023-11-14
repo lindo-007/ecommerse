@@ -10,15 +10,15 @@ type CartItemProps = {
 
 export default function CartItem({ product }: CartItemProps) {
   return (
-    <div>
-      <h3>{product?.title.slice(0, 47)}</h3>
+    <div className="flex  my-5 w-full justify-between">
+      <Image
+        src={product?.image}
+        width={50}
+        height={50}
+        alt={`picture of ${product?.title}`}
+      />
       <div>
-        <Image
-          src={product?.image}
-          width={50}
-          height={50}
-          alt={`picture of ${product?.title}`}
-        />
+        <h3 className="text-l">{product?.title.slice(0, 17)}</h3>
         <p>{product.cartQuantity}</p>
         <p>R{product?.price}</p>
       </div>
