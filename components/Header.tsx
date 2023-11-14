@@ -5,23 +5,21 @@ import { AiOutlineHome, AiOutlineShopping } from "react-icons/ai";
 
 function Header() {
   return (
-    <header>
-      <div>
-        <figure>
-          <Link href="/">
-            <a>
-              <AiOutlineHome size={"2rem"} color="#e28743" />
-            </a>
-          </Link>
-        </figure>
-        <figure>
-          <Link href="/cart">
-            <a>
-              <AiOutlineShopping size={"2rem"} color="#e28743" />
-            </a>
-          </Link>
-        </figure>
-      </div>
+    <header className="flex justify-between py-8">
+      <figure>
+        <Link href="/">
+          <a>
+            <AiOutlineHome size={"2rem"} color="#e28743" />
+          </a>
+        </Link>
+      </figure>
+      <figure>
+        <Link href="/cart">
+          <a>
+            <AiOutlineShopping size={"2rem"} color="#e28743" />
+          </a>
+        </Link>
+      </figure>
     </header>
   );
 }

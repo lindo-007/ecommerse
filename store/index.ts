@@ -1,7 +1,7 @@
 import { combineReducers, legacy_createStore as createStore } from "redux";
 import cartReducer from "./cart";
 import { persistStore, persistReducer } from "redux-persist";
-import createWebStorage from "redux-persist/lib/storage/createWebStorage";
+import createWebStorage from "redux-persist/lib/storage";
 
 const createNoopStorage = () => {
   return {
@@ -18,7 +18,7 @@ const createNoopStorage = () => {
 };
 
 const storage =
-  typeof window === "undefined" ? createNoopStorage() : createWebStorage();
+  typeof window === "undefined" ? createNoopStorage() : createWebStorage;
 
 const rootReducer = combineReducers({
   cart: cartReducer,

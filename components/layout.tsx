@@ -1,10 +1,9 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import styled from "styled-components";
 
 function Layout({ children }) {
   return (
-    <section>
+    <section className="flex-col w-11/12 m-auto ">
       <Header />
       <main>{children}</main>
       <Footer />
@@ -12,15 +11,15 @@ function Layout({ children }) {
   );
 }
 
-const MainContainer = styled.main`
-  /* display: flex;
+/*const MainContainer = styled.main`
+ display: flex;
   margin: 2rem;
   min-height: 68vh;
-  flex: 1; */
-`;
+  flex: 1; 
+`;*/
 
-const LayoutContainer = styled.section`
-  /* display: flex;
+/* const LayoutContainer = styled.section`
+ display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 98.8vh;
@@ -35,7 +34,7 @@ const LayoutContainer = styled.section`
   }
   p {
     font-family: "Roboto", sans-serif;
-  } */
-`;
+  }
+`; */
 
 export default Layout;
