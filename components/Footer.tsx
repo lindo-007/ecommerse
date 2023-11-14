@@ -3,29 +3,29 @@ import styled from "styled-components";
 
 function Footer() {
   return (
-    <footer>
-      <section>
+    <footer className="bg-blue-300 w-full flex flex-col items-center justify-start mt-12  pt-12" >
+      <section className=" w-full flex flex-col md:flex-row md:p-2  justify-around  ">
         <section>
           <h2>Contact Us</h2>
-          <p>Email: info@lottostar.co.za</p>
-          <p>Phone: +27 123 456 789</p>
+          <p className=" p-1">Email: info@lottostar.co.za</p>
+          <p className=" p-1">Phone: +27 123 456 789</p>
         </section>
         <section>
           <h2>Quick Links</h2>
           <ul>
-            <li>
+            <li className=" p-1">
               <Link href="/about">About Us</Link>
             </li>
-            <li>
+            <li className=" p-1">
               <Link href="/contact">Contact</Link>
             </li>
-            <li>
+            <li className=" p-1">
               <Link href="/faq">FAQ</Link>
             </li>
           </ul>
         </section>
       </section>
-      <p>&copy; 2023 E-commerce Store. All rights reserved.</p>
+      <p className="my-3">&copy; 2023 E-commerce Store. All rights reserved.</p>
     </footer>
   );
 }

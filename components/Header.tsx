@@ -1,25 +1,34 @@
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import { AiOutlineHome, AiOutlineShopping } from "react-icons/ai";
-
+import { FaShoppingCart } from "react-icons/fa";
+import { FaUser, FaHouse } from "react-icons/fa6";
 function Header() {
   return (
-    <header className="flex justify-between py-8">
-      <figure>
+    <header className="flex justify-between py-8 bg-blue-300">
+      <figure className="p-5">
         <Link href="/">
           <a>
-            <AiOutlineHome size={"2rem"} color="#e28743" />
+            <FaHouse size={"2rem"} />
           </a>
         </Link>
       </figure>
-      <figure>
-        <Link href="/cart">
-          <a>
-            <AiOutlineShopping size={"2rem"} color="#e28743" />
-          </a>
-        </Link>
-      </figure>
+      <div className="flex" >
+        <figure className="p-5">
+          <Link href="/cart">
+            <a>
+              <FaShoppingCart size={"2rem"} />
+            </a>
+          </Link>
+        </figure>
+        <figure className="p-5">
+          <Link href="/user">
+            <a>
+              <FaUser size={"2rem"} />
+            </a>
+          </Link>
+        </figure>
+      </div>
     </header>
   );
 }

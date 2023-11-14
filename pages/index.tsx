@@ -14,9 +14,9 @@ export default function Home({
   products,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <section>
+    <>
       <DisplayProducts products={products} />
-    </section>
+    </>
   );
 }
 /* const HomeContainer = styled.section`

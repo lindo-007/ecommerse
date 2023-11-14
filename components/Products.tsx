@@ -9,9 +9,9 @@ type ProductProps = {
 
 function DisplayProducts({ products }: ProductProps) {
   return (
-    <section>
-      <h2>Products</h2>
-      <section>
+    <section className="flex-col ">
+      <h2 className="p-2 m-2">Products</h2>
+      <section className="flex flex-wrap justify-center">
         {products.map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}
