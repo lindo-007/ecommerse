@@ -20,43 +20,43 @@ export default function Cart() {
   }, [items]);
 
   return (
-    <CartContainer>
-      <CartHeader>Cart</CartHeader>
+    <section>
+      <h2>Cart</h2>
       {items.length === 0 ? (
-        <EmptyCartMessage>Nothing here</EmptyCartMessage>
+        <div>Nothing here</div>
       ) : (
         <>
           {items.map((item) => (
             <CartItem key={item?.id} product={item} />
           ))}
-          <TotalCost>
+          <p>
             Total: {currency} {totalCost.toFixed(2)}
-          </TotalCost>
+          </p>
         </>
       )}
-    </CartContainer>
+    </section>
   );
 }
 
 const CartContainer = styled.section`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1; */
 `;
 
 const CartHeader = styled.h2`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  /* font-size: 1.5rem;
+  margin-bottom: 1rem; */
 `;
 
 const EmptyCartMessage = styled.div`
-  font-size: 1rem;
+  /* font-size: 1rem;
   margin: 2rem 0;
-  color: #555;
+  color: #555; */
 `;
 
 const TotalCost = styled.p`
-  font-size: 1.2rem;
+  /* font-size: 1.2rem;
   font-weight: bold;
-  margin-top: 1rem;
+  margin-top: 1rem; */
 `;

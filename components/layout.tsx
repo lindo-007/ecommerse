@@ -4,23 +4,23 @@ import styled from "styled-components";
 
 function Layout({ children }) {
   return (
-    <LayoutContainer>
+    <section>
       <Header />
-      <MainContainer>{children}</MainContainer>
+      <main>{children}</main>
       <Footer />
-    </LayoutContainer>
+    </section>
   );
 }
 
 const MainContainer = styled.main`
-  display: flex;
+  /* display: flex;
   margin: 2rem;
   min-height: 68vh;
-  flex: 1;
+  flex: 1; */
 `;
 
 const LayoutContainer = styled.section`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 98.8vh;
@@ -35,7 +35,7 @@ const LayoutContainer = styled.section`
   }
   p {
     font-family: "Roboto", sans-serif;
-  }
+  } */
 `;
 
 export default Layout;

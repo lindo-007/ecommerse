@@ -9,35 +9,35 @@ type ProductProps = {
 
 function DisplayProducts({ products }: ProductProps) {
   return (
-    <ProductsContainer>
-      <ProductsHeader>Products</ProductsHeader>
-      <ProductsSection>
+    <section>
+      <h2>Products</h2>
+      <section>
         {products.map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}
-      </ProductsSection>
-    </ProductsContainer>
+      </section>
+    </section>
   );
 }
 
 const ProductsSection = styled.section`
-  display: flex;
+  /* display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; */
 `;
 
 const ProductsContainer = styled.section`
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   max-width: 90%;
-  padding: 2rem;
+  padding: 2rem; */
 `;
 
 const ProductsHeader = styled.h2`
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 `;
 
 export default DisplayProducts;

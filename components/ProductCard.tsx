@@ -21,9 +21,9 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <ProductContainer>
+    <div>
       <Link href={`/product/${product.id}`}>
-        <ProductContent>
+        <div>
           <Image
             src={product.image}
             width={200}
@@ -35,22 +35,22 @@ export default function ProductCard({ product }: ProductCardProps) {
             {currency}
             {product.price}
           </p>
-        </ProductContent>
+        </div>
       </Link>
-      <AddToCartButton onClick={handleAddToCart}>Add To Cart</AddToCartButton>
-    </ProductContainer>
+      <button onClick={handleAddToCart}>Add To Cart</button>
+    </div>
   );
 }
 
 const AddToCartButton = styled.button`
-  padding: 0.5rem 1rem;
+  /* padding: 0.5rem 1rem; */
   /* color: #e28743; */
-  background-color:#eeeee4;
+  /* background-color:#eeeee4; */
 `
 const ProductContent = styled.div``;
 
 const ProductContainer = styled.figure`
-  height: 20rem;
+  /* height: 20rem;
   display: flex;
   flex-direction: column;
   max-width: 90%;
@@ -61,5 +61,5 @@ const ProductContainer = styled.figure`
   &:hover {
     transform: scale(1.05);
   }
-  margin: 2rem;
+  margin: 2rem; */
 `;

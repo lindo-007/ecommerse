@@ -41,24 +41,24 @@ export default function AddToCart({ product }: AddToCartProps) {
   };
 
   return (
-    <Cart>
-      <ActionButton disabled={isAddDisabled} onClick={handleAddToCart}>
+    <div>
+      <button disabled={isAddDisabled} onClick={handleAddToCart}>
         +
-      </ActionButton>
-      <ActionButton disabled={isRemoveDisabled} onClick={handleRemoveFromCart}>
+      </button>
+      <button disabled={isRemoveDisabled} onClick={handleRemoveFromCart}>
         -
-      </ActionButton>
-    </Cart>
+      </button>
+    </div>
   );
 }
 
 const Cart = styled.div`
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
 `;
 
 const ActionButton = styled.button`
-  margin: 1rem 1rem 1rem 0rem;
+  /* margin: 1rem 1rem 1rem 0rem;
   padding: 0.6rem 1.5rem;
   font-size: 1rem;
   background-color: #4caf50;
@@ -69,5 +69,5 @@ const ActionButton = styled.button`
   &:disabled {
     background-color: #ccc;
     cursor: not-allowed;
-  }
+  } */
 `;

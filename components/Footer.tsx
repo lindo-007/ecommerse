@@ -3,14 +3,14 @@ import styled from "styled-components";
 
 function Footer() {
   return (
-    <FooterContainer>
-      <FooterContent>
-        <Section>
+    <footer>
+      <section>
+        <section>
           <h2>Contact Us</h2>
           <p>Email: info@lottostar.co.za</p>
           <p>Phone: +27 123 456 789</p>
-        </Section>
-        <Section>
+        </section>
+        <section>
           <h2>Quick Links</h2>
           <ul>
             <li>
@@ -23,31 +23,31 @@ function Footer() {
               <Link href="/faq">FAQ</Link>
             </li>
           </ul>
-        </Section>
-      </FooterContent>
-      <Copyright>&copy; 2023 E-commerce Store. All rights reserved.</Copyright>
-    </FooterContainer>
+        </section>
+      </section>
+      <p>&copy; 2023 E-commerce Store. All rights reserved.</p>
+    </footer>
   );
 }
 
 const FooterContainer = styled.footer`
-  background-color: #f5f5f5;
-  color: #333;
+  /* background-color: #f5f5f5;
+  color: #333; */
 `;
 
 const FooterContent = styled.div`
-  max-width: 1200px;
+  /* max-width: 1200px;
   margin: 0 1rem;
   display: flex;
   justify-content: space-around;
 
   @media (max-width: 700px) {
     flex-direction: column;
-  }
+  } */
 `;
 
 const Section = styled.div`
-  h2 {
+  /* h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
@@ -73,14 +73,14 @@ const Section = styled.div`
         text-decoration: underline;
       }
     }
-  }
+  } */
 `;
 
 const Copyright = styled.p`
-  text-align: center;
+  /* text-align: center;
   margin-top: 2rem;
   font-size: 0.8rem;
-  color:#e28743;
+  color:#e28743; */
 `;
 
 export default Footer;

@@ -38,45 +38,45 @@ export const getStaticProps = async ({ params }) => {
   return { props: { product } };
 };
 //make global price
-function Product({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
+function ProductPage({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <ProductContainer>
-      <ProductContent>
-        <ProductImage>
+    <section>
+      <section>
+        <figure>
           <Image
             src={product.image}
             width={200}
             height={200}
             alt={`Product image of ${product.title}`}
           />
-        </ProductImage>
-        <ProductDetails>
+        </figure>
+        <figcaption>
           <h2>{product.title}</h2>
-          <ProductText>{product.category}</ProductText>
-          <ProductText>{product.description}</ProductText>
-          <ProductText>
+          <p>{product.category}</p>
+          <p>{product.description}</p>
+          <p>
             {currency}
             {product.price}
-          </ProductText>
-          <ProductText>
+          </p>
+          <p>
             {product.rating.rate} stars | {product.rating.count} reviews
-          </ProductText>
+          </p>
           <AddToCart product={product}></AddToCart>
-        </ProductDetails>
-      </ProductContent>
-    </ProductContainer>
+        </figcaption>
+      </section>
+    </section>
   );
 }
 
 const ProductContainer = styled.section`
-  max-width: 100%;
+  /* max-width: 100%;
   display: flex;
   flex: 1;
-  margin: auto;
+  margin: auto; */
 `;
 
 const ProductContent = styled.section`
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: center;
   min-height: 85%;
@@ -84,25 +84,25 @@ const ProductContent = styled.section`
 
   @media (max-width: 700px) {
     flex-direction: column;
-  }
+  } */
 `;
 
 const ProductImage = styled.figure`
-  flex: 1;
+  /* flex: 1;
   margin-right: 2rem;
 
   img {
     width: 100%;
     height: auto;
-  }
+  } */
 `;
 
 const ProductDetails = styled.figcaption`
-  flex: 2;
+  /* flex: 2; */
 `;
 
 const ProductText = styled.p`
-  max-width: 30rem;
+  /* max-width: 30rem; */
 `;
 
-export default Product;
+export default ProductPage;

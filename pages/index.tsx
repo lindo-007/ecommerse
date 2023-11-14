@@ -14,13 +14,13 @@ export default function Home({
   products,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <HomeContainer>
+    <section>
       <DisplayProducts products={products} />
-    </HomeContainer>
+    </section>
   );
 }
 const HomeContainer = styled.section`
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 `;
