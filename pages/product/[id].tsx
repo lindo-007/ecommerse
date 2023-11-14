@@ -40,30 +40,28 @@ export const getStaticProps = async ({ params }) => {
 //make global price
 function ProductPage({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <section>
-      <section>
-        <figure>
+    <section className="w-11/12 my-12 flex flex-col justify-around md:flex-row">
+        <figure className="flex items-center justify-center my-5" >
           <Image
             src={product.image}
             width={200}
-            height={200}
+            height={285}
             alt={`Product image of ${product.title}`}
           />
         </figure>
-        <figcaption>
-          <h2>{product.title}</h2>
-          <p>{product.category}</p>
-          <p>{product.description}</p>
-          <p>
+        <figcaption className="flex-2 my-5">
+          <h2 className="text-3xl text-blue-300 mb-3">{product.title}</h2>
+          <p className="text-xl mb-3">{product.category}</p>
+          <p className="mb-2">{product.description}</p>
+          <p className="mb-2">
             {currency}
             {product.price}
           </p>
-          <p>
+          <p className="mb-2">
             {product.rating.rate} stars | {product.rating.count} reviews
           </p>
           <AddToCart product={product}></AddToCart>
         </figcaption>
-      </section>
     </section>
   );
 }
