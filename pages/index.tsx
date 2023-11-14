@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import Categories from "../components/Categories";
 import DisplayProducts from "../components/Products";
 import { Products } from "../types/products.type";
 import type { InferGetServerSidePropsType } from "next";
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
   const products: Products = await res.json();
 
