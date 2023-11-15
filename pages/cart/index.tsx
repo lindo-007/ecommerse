@@ -5,6 +5,7 @@ import CartItem from "../../components/CartItem";
 import { useSelector } from "react-redux";
 import { Store } from "../../types/store.type";
 import styled from "styled-components";
+import { FaShoppingCart } from "react-icons/fa";
 
 const currency = "R";
 
@@ -20,18 +21,20 @@ export default function Cart() {
   }, [items]);
 
   return (
-    <section className="flex flex-col justify-between w-11/12 ">
-      <h2 className="text-2xl text-blue-300">Cart</h2>
+    <section className="flex flex-col justify-between w-full ">
+      <h2 className="text-2xl text-blue-300 p-5">Cart</h2>
       {items.length === 0 ? (
-        <div>Nothing here</div>
+        <div className="flex flex-1 items-center justify-center">
+          <FaShoppingCart size={120} />
+        </div>
       ) : (
         <>
-          <section className="flex-1 flex flex-col ">
+          <section className="flex-1 flex flex-col  mx-4">
             {items.map((item) => (
               <CartItem key={item?.id} product={item} />
             ))}
           </section>
-          <p className="">
+          <p className="p-5">
             Total: {currency} {totalCost.toFixed(2)}
           </p>
         </>

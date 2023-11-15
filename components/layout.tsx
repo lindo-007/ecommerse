@@ -5,7 +5,9 @@ function Layout({ children }) {
   return (
     <section className="flex flex-col  m-auto justify-between min-h-screen">
       <Header />
-      <main className="flex-1 flex justify-center ">{children}</main>
+      <main className="flex-1 flex justify-center min-w-full xl:min-w-min xl:w-320  mx-auto">
+        {children}
+      </main>
       <Footer />
     </section>
   );

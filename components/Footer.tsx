@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 function Footer() {
   return (
-    <footer className="bg-blue-300 w-full flex flex-col items-center justify-start mt-12  pt-12" >
-      <section className=" w-full flex flex-col md:flex-row md:p-2  justify-around  ">
+    <footer className="bg-blue-300 w-full flex flex-col items-center justify-start  pt-12" >
+      <section className=" w-full flex flex-col md:flex-row md:p-2  justify-around max-w-7xl ">
         <section>
           <h2>Contact Us</h2>
           <p className=" p-1">Email: info@lottostar.co.za</p>

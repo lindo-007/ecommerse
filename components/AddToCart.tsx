@@ -41,11 +41,11 @@ export default function AddToCart({ product }: AddToCartProps) {
   };
 
   return (
-    <div className=" flex justify-start">
-       <button className="bg-blue-300 py-3 px-5 my-3 mr-5"  disabled={isAddDisabled} onClick={handleAddToCart}>
+    <div className=" flex items-end">
+       <button className="bg-blue-300 py-3 px-5 my-3 mr-5 "  disabled={isAddDisabled} onClick={handleAddToCart}>
         +
       </button>
-      <button className="bg-blue-300 py-3 px-5 my-3 mr-5"  disabled={isRemoveDisabled} onClick={handleRemoveFromCart}>
+      <button className="bg-blue-300 py-3 px-5 my-3  "  disabled={isRemoveDisabled} onClick={handleRemoveFromCart}>
         -
       </button>
     </div>

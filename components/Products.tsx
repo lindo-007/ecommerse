@@ -10,7 +10,7 @@ type ProductProps = {
 function DisplayProducts({ products }: ProductProps) {
   return (
     <section className="flex-col ">
-      <h2 className="p-2 m-2">Products</h2>
+      <h2 className="text-2xl text-blue-300 p-5">Products</h2>
       <section className="flex flex-wrap justify-center">
         {products.map((product) => (
           <ProductCard product={product} key={product.id} />
