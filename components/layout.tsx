@@ -3,7 +3,7 @@ import Footer from "./Footer";
 
 function Layout({ children }) {
   return (
-    <section className="flex flex-col  m-auto max-w-7xl justify-between min-h-screen">
+    <section className="flex flex-col  m-auto justify-between min-h-screen">
       <Header />
       <main className="flex-1 flex justify-center ">{children}</main>
       <Footer />

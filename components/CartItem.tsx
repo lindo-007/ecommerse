@@ -10,19 +10,24 @@ type CartItemProps = {
 
 export default function CartItem({ product }: CartItemProps) {
   return (
-    <div className="flex  my-5 w-full justify-between">
-      <Image
-        src={product?.image}
-        width={50}
-        height={50}
-        alt={`picture of ${product?.title}`}
-      />
-      <div>
-        <h3 className="text-l">{product?.title.slice(0, 17)}</h3>
-        <p>{product.cartQuantity}</p>
+    <div className="flex  my-5 justify-between  ">
+      <div className="flex ">
+        <Image
+          src={product?.image}
+          width={50}
+          height={50}
+          alt={`picture of ${product?.title}`}
+        />
+      </div>
+      <div className="flex-1 ml-5">
+        <h3 className="text-l">{product?.title.slice(0, 21) + '...'}</h3>
+        <p>{product.cartQuantity} Items</p>
         <p>R{product?.price}</p>
       </div>
-      <AddToCart product={product} />
+
+      <div className="">
+        <AddToCart product={product} />
+      </div>
     </div>
   );
 }

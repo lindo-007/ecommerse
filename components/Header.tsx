@@ -5,30 +5,32 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaUser, FaHouse } from "react-icons/fa6";
 function Header() {
   return (
-    <header className="flex justify-between py-8 bg-blue-300">
-      <figure className="p-5">
-        <Link href="/">
-          <a>
-            <FaHouse size={"2rem"} />
-          </a>
-        </Link>
-      </figure>
-      <div className="flex" >
+    <header className="bg-blue-300">
+      <section className="flex justify-between py-8 bg-blue-300 max-w-7xl mx-auto">
         <figure className="p-5">
-          <Link href="/cart">
+          <Link href="/">
             <a>
-              <FaShoppingCart size={"2rem"} />
+              <FaHouse size={"2rem"} />
             </a>
           </Link>
         </figure>
-        <figure className="p-5">
-          <Link href="/user">
-            <a>
-              <FaUser size={"2rem"} />
-            </a>
-          </Link>
-        </figure>
-      </div>
+        <div className="flex">
+          <figure className="p-5">
+            <Link href="/cart">
+              <a>
+                <FaShoppingCart size={"2rem"} />
+              </a>
+            </Link>
+          </figure>
+          <figure className="p-5">
+            <Link href="/user">
+              <a>
+                <FaUser size={"2rem"} />
+              </a>
+            </Link>
+          </figure>
+        </div>
+      </section>
     </header>
   );
 }
