@@ -34,8 +34,12 @@ export default function Cart() {
               <CartItem key={item?.id} product={item} />
             ))}
           </section>
-          <p className="p-5">
-            Total: {currency} {totalCost.toFixed(2)}
+          <p className="p-5 text-xl text-blue-300">
+            Total:
+            <span className="text-black">
+              {" " + currency}
+              {totalCost.toFixed(2)}
+            </span>
           </p>
         </>
       )}

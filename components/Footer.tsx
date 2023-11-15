@@ -3,15 +3,21 @@ import styled from "styled-components";
 
 function Footer() {
   return (
-    <footer className="bg-blue-300 w-full flex flex-col items-center justify-start  pt-12" >
-      <section className=" w-full flex flex-col md:flex-row md:p-2  justify-around max-w-7xl ">
-        <section>
-          <h2>Contact Us</h2>
-          <p className=" p-1">Email: info@lottostar.co.za</p>
-          <p className=" p-1">Phone: +27 123 456 789</p>
+    <footer className="bg-blue-300  flex flex-col items-center justify-start  pt-12">
+      {/* <section className=""></section> */}
+      <section className=" w-11/12 flex flex-col md:flex-row   justify-around max-w-7xl ">
+        <section className="p-3">
+          <h2 className="text-2xl text-gray-700 ">Contact Us</h2>
+          <p className=" p-1">
+            Email:
+            <a href="mailto:info@lottostar.co.za" className=" text-gray-700"> info@lottostar.co.za</a>
+          </p>
+          <p className=" p-1">
+            Phone:<a href="tel:+27 123 456 789" className=" text-gray-700"> +27 123 456 789</a>
+          </p>
         </section>
-        <section>
-          <h2>Quick Links</h2>
+        <section className="p-3">
+          <h2 className="text-2xl text-gray-700 ">Quick Links</h2>
           <ul>
             <li className=" p-1">
               <Link href="/about">About Us</Link>
@@ -25,7 +31,7 @@ function Footer() {
           </ul>
         </section>
       </section>
-      <p className="my-3">&copy; 2023 E-commerce Store. All rights reserved.</p>
+      <p className="my-3 w-11/12>"> &copy; 2023 E-commerce Store. All rights reserved.</p>
     </footer>
   );
 }

@@ -10,7 +10,7 @@ function Header() {
         <figure className="p-5">
           <Link href="/">
             <a>
-              <FaHouse size={"2rem"} />
+              <FaHouse size={"2rem"} color="#0f172a" />
             </a>
           </Link>
         </figure>
@@ -18,14 +18,14 @@ function Header() {
           <figure className="p-5">
             <Link href="/cart">
               <a>
-                <FaShoppingCart size={"2rem"} />
+                <FaShoppingCart size={"2rem"} color="#0f172a" />
               </a>
             </Link>
           </figure>
           <figure className="p-5">
             <Link href="/user">
               <a>
-                <FaUser size={"2rem"} />
+                <FaUser size={"2rem"} color="#0f172a" />
               </a>
             </Link>
           </figure>
