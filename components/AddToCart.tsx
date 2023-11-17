@@ -40,10 +40,10 @@ export default function AddToCart({ product }: AddToCartProps) {
 
   return (
     <div className=" flex items-end">
-       <button className="bg-blue-300 py-3 px-5 my-3 mr-5 "  disabled={isAddDisabled} onClick={handleAddToCart}>
+       <button className="bg-blue-300 py-3 px-5 my-3 mr-5 disabled:opacity-25 "  disabled={isAddDisabled} onClick={handleAddToCart}>
         +
       </button>
-      <button className="bg-blue-300 py-3 px-5 my-3  "  disabled={isRemoveDisabled} onClick={handleRemoveFromCart}>
+      <button className="bg-blue-300 py-3 px-5 my-3 disabled:opacity-25 "  disabled={isRemoveDisabled} onClick={handleRemoveFromCart}>
         -
       </button>
     </div>
