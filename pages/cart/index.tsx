@@ -1,28 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
-import { Product } from "../../types/products.type";
 import CartItem from "../../components/CartItem";
-import { useSelector } from "react-redux";
-import { Store } from "../../types/store.type";
 import { FaShoppingCart } from "react-icons/fa";
 import data from "../../data";
+import useCart from "../../store/hooks";
 
 export default function Cart() {
-  const { items } = useSelector((store: Store) => store.cart);
-  const [totalCost, setTotalCost] = useState(0);
-  const [numberOfItems, setNumberOfItems] = useState(0);
-
-  useEffect(() => {
-    let totalItems = items.reduce((total: number, item: Product) => {
-      return total + Number(item.cartQuantity);
-    }, 0);
-
-    const cost = items.reduce((total: number, item: Product) => {
-      return total + Number(item.price) * Number(item.cartQuantity);
-    }, 0);
-    setTotalCost(cost);
-    setNumberOfItems(totalItems);
-  }, [items]);
+  const { items, totalCost, numberOfItems } = useCart();
 
   return (
     <section className="flex flex-col justify-between w-full ">
