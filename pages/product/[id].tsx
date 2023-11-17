@@ -19,14 +19,14 @@ function ProductPage({
         />
       </figure>
       <figcaption className="md:flex-1 my-5 ">
-        <h2 className="text-3xl text-blue-300 mb-3">{product.title}</h2>
-        <p className="text-xl mb-3">{product.category}</p>
-        <p className="mb-2">{product.description}</p>
+        <h2 className="font-mont text-3xl text-blue-300 mb-3">{product.title}</h2>
+        <p className="font-Agbalumo text-xl mb-3">{product.category}</p>
+        <p className="font-mont text-justify mb-2">{product.description}</p>
         <p className="mb-2">
           {data.currency}
           {product.price}
         </p>
-        <p className="mb-2">
+        <p className="mb-2 font-noto">
           {product.rating.rate} stars | {product.rating.count} reviews
         </p>
         <AddToCart product={product}></AddToCart>
