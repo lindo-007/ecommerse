@@ -1,16 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
-import styled from "styled-components";
 import { Product } from "../types/products.type";
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../store/cart";
 import { Store } from "../types/store.type";
 import { useEffect, useState } from "react";
+import data from "../data";
 
 type AddToCartProps = {
   product: Product;
 };
-
-const cartLimit = 20;
 
 export default function AddToCart({ product }: AddToCartProps) {
   const dispatch: Dispatch = useDispatch();
@@ -29,7 +27,7 @@ export default function AddToCart({ product }: AddToCartProps) {
     }
     setIsRemoveDisabled(!isInCart(product));
 
-    setIsAddDisabled(countItemsInCart() >= 20);
+    setIsAddDisabled(countItemsInCart() >= data.cartMax);
   }, [items, product]);
 
   const handleAddToCart = () => {
@@ -52,22 +50,3 @@ export default function AddToCart({ product }: AddToCartProps) {
   );
 }
 
-const Cart = styled.div`
-  /* display: flex;
-  align-items: center; */
-`;
-
-const ActionButton = styled.button`
-  /* margin: 1rem 1rem 1rem 0rem;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-
-  &:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  } */
-`;

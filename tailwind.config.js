@@ -7,8 +7,9 @@ module.exports = {
   theme: {
     fontFamily: {
       mont: ["Montserrat", "Roboto", "system-ui"],
-      noto: ["Noto+Serif+Balinese", "Roboto", "system-ui"],
-      noto: ["Agbalumo", "Roboto", "system-ui"],
+      noto: ["Noto Serif Balinese", "Roboto", "system-ui"],
+      agbalumo: ["Agbalumo", "Roboto", "system-ui"],
+      roboto: ["Roboto", "Montserrat", "system-ui"],
     },
     extend: {
       width: {
