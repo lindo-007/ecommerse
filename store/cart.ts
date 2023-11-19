@@ -14,7 +14,7 @@ function addToCart(state: CartState, product: Product) {
   if (existingItem) {
     const newData = state.items.map((item) =>
     item?.id === product.id
-    ? { ...item, cartQuantity: item.cartQuantity + 1 }
+    ? { ...item, cartQuantity: item?.cartQuantity! + 1 }
     : item
     );
     Object.assign(state.items, newData);
@@ -35,7 +35,7 @@ function removeFromCart(state: CartState, product: Product) {
   const newData = state.items
   .map((item) =>
     item?.id === product.id
-      ? { ...item, cartQuantity: item.cartQuantity - 1 }
+      ? { ...item, cartQuantity: item?.cartQuantity! - 1 }
       : item
   )
   .filter((item) => item !== undefined && item.cartQuantity !== 0);

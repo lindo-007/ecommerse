@@ -1,34 +1,29 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch } from "redux";
 import { Product } from "../types/products.type";
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../store/cart";
-import { Store } from "../types/store.type";
 import { useEffect, useState } from "react";
 import data from "../data";
-import useCart from "../store/hooks";
+import useCart from "../store/hooks/useCart";
 
 type AddToCartProps = {
   product: Product;
 };
 
 export default function AddToCart({ product }: AddToCartProps) {
-  const { items, numberOfItems,isInCart } = useCart();
-  const dispatch: Dispatch = useDispatch();
-  
+  const { items, numberOfItems, isInCart,addToCart,removeFromCart } = useCart();
+
   const [isRemoveDisabled, setIsRemoveDisabled] = useState(true);
   const [isAddDisabled, setIsAddDisabled] = useState(true);
 
   useEffect(() => {
     setIsRemoveDisabled(!isInCart(product));
     setIsAddDisabled(numberOfItems >= data.cartMax);
-  }, [items, product, numberOfItems,isInCart]);
+  }, [items, product, numberOfItems, isInCart]);
 
   const handleAddToCart = () => {
-    dispatch({ type: ADD_TO_CART, payload: { product } });
+    addToCart(product)
   };
 
   const handleRemoveFromCart = () => {
-    dispatch({ type: REMOVE_FROM_CART, payload: { product } });
+    removeFromCart(product)
   };
 
   return (

@@ -2,7 +2,7 @@
 import CartItem from "../../components/CartItem";
 import { FaShoppingCart } from "react-icons/fa";
 import data from "../../data";
-import useCart from "../../store/hooks";
+import useCart from "../../store/hooks/useCart";
 
 export default function Cart() {
   const { items, totalCost, numberOfItems } = useCart();
@@ -15,7 +15,7 @@ export default function Cart() {
           <div className="text-red-600 text-2xl p-5"> cart is full</div>
         )}
       </div>
-      {items.length === 0 ? (
+      {numberOfItems === 0 ? (
         <div className="flex flex-1 items-center justify-center">
           <FaShoppingCart size={120} />
         </div>
