@@ -1,19 +1,24 @@
 import { Product } from "../types/products.type";
 import Image from "next/image";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { Dispatch } from "redux";
-import { ADD_TO_CART } from "../store/cart";
 import data from "../data";
+import useCart from "../store/hooks/useCart";
+import { useEffect, useState } from "react";
+
 type ProductCardProps = {
   product: Product;
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const dispatch: Dispatch = useDispatch();
+  const [addButtonDisabled, setAddButtonDisabled] = useState(true);
+  const { addToCart, isInCart, items, cartIsfull } = useCart();
+
+  useEffect(() => {
+    setAddButtonDisabled(isInCart(product) || cartIsfull);
+  }, [product, isInCart, items, cartIsfull]);
 
   const handleAddToCart = () => {
-    dispatch({ type: ADD_TO_CART, payload: { product } });
+    addToCart(product);
   };
 
   return (
@@ -33,8 +38,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           </p>
         </div>
       </Link>
-      <button className="bg-blue-300 px-14 py-2 my-3" onClick={handleAddToCart}>
-        Add To Cart
+      <button
+        disabled={addButtonDisabled}
+        className="bg-blue-300 px-14 py-2 my-3 disabled:opacity-25"
+        onClick={handleAddToCart}
+      >
+        {cartIsfull ? "Cart Is Full":"Add To Cart"}
+        
       </button>
     </div>
   );

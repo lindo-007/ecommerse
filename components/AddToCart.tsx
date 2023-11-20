@@ -1,47 +1,51 @@
 import { Product } from "../types/products.type";
 import { useEffect, useState } from "react";
-import data from "../data";
 import useCart from "../store/hooks/useCart";
 
 type AddToCartProps = {
   product: Product;
+  component?: "PRODUCT_CARD" | "CART_ITEM " | "PRODUCT_PAGE";
 };
 
 export default function AddToCart({ product }: AddToCartProps) {
-  const { items, numberOfItems, isInCart,addToCart,removeFromCart } = useCart();
+  const { items, cartIsfull, isInCart, addToCart, removeFromCart } = useCart();
 
-  const [isRemoveDisabled, setIsRemoveDisabled] = useState(true);
-  const [isAddDisabled, setIsAddDisabled] = useState(true);
+  const [removeButtonDisabled, setRemoveButtonDisabled] = useState(true);
 
   useEffect(() => {
-    setIsRemoveDisabled(!isInCart(product));
-    setIsAddDisabled(numberOfItems >= data.cartMax);
-  }, [items, product, numberOfItems, isInCart]);
+    setRemoveButtonDisabled(!isInCart(product));
+  }, [product, isInCart, items]);
 
   const handleAddToCart = () => {
-    addToCart(product)
+    addToCart(product);
   };
 
   const handleRemoveFromCart = () => {
-    removeFromCart(product)
+    removeFromCart(product);
   };
 
   return (
-    <div className=" flex items-end">
-      <button
-        className="bg-blue-300 py-3 px-5 my-3 mr-5 disabled:opacity-25 "
-        disabled={isAddDisabled}
-        onClick={handleAddToCart}
-      >
-        +
-      </button>
-      <button
-        className="bg-blue-300 py-3 px-5 my-3 disabled:opacity-25 "
-        disabled={isRemoveDisabled}
-        onClick={handleRemoveFromCart}
-      >
-        -
-      </button>
-    </div>
+    <>
+      {/* {component === PRODUCT_CARD} */}
+      {/* <button className="bg-blue-300 px-14 py-2 my-3" onClick={handleAddToCart}>
+        Add To Cart
+      </button> */}
+      <div className=" flex items-end">
+        <button
+          className="bg-blue-300 py-3 px-5 my-3 mr-5 disabled:opacity-25 "
+          disabled={cartIsfull}
+          onClick={handleAddToCart}
+        >
+          +
+        </button>
+        <button
+          className="bg-blue-300 py-3 px-5 my-3 disabled:opacity-25 "
+          disabled={removeButtonDisabled}
+          onClick={handleRemoveFromCart}
+        >
+          -
+        </button>
+      </div>
+    </>
   );
 }

@@ -5,17 +5,17 @@ import data from "../../data";
 import useCart from "../../store/hooks/useCart";
 
 export default function Cart() {
-  const { items, totalCost, numberOfItems } = useCart();
+  const { items, totalCost, numberOfItems ,cartIsEmpty, cartIsfull} = useCart();
 
   return (
     <section className="flex flex-col justify-between w-full ">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl text-blue-300 p-5">Cart</h2>
-        {numberOfItems === 9 && (
+        {cartIsfull && (
           <div className="text-red-600 text-2xl p-5"> cart is full</div>
         )}
       </div>
-      {numberOfItems === 0 ? (
+      {cartIsEmpty ? (
         <div className="flex flex-1 items-center justify-center">
           <FaShoppingCart size={120} />
         </div>

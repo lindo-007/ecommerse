@@ -29,7 +29,7 @@ export default function CartItem({ product }: CartItemProps) {
           </h3>
         </Link>
         <p>
-          {product.cartQuantity} {product.cartQuantity > 1 ? "Items" : "Item"}
+          {product.cartQuantity} {product?.cartQuantity! > 1 ? "Items" : "Item"}
         </p>
         <p>
           {data.currency}
