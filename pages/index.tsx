@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import DisplayProducts from "../components/Products";
 import { Products } from "../types/products.type";
 import type { InferGetServerSidePropsType } from "next";
@@ -19,8 +18,4 @@ export default function Home({
     </>
   );
 }
-/* const HomeContainer = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`; */
+

@@ -38,7 +38,7 @@ export default function CartItem({ product }: CartItemProps) {
       </div>
 
       <div className="">
-        <AddToCart product={product} />
+        <AddToCart type="TOGGLE" product={product} />
       </div>
     </div>
   );

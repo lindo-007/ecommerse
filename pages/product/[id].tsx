@@ -1,13 +1,20 @@
 import Image from "next/image";
-import { InferGetStaticPropsType } from "next";
 import { Product } from "../../types/products.type";
 import AddToCart from "../../components/AddToCart";
 import fetcher from "../../helper/API";
 import data from "../../data";
 
-function ProductPage({
-  product,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+type ParamType = {
+  params: {
+    id: string;
+  };
+};
+
+type ProductProps = {
+  product: Product;
+};
+
+function ProductPage({ product }: ProductProps) {
   return (
     <section className="w-11/12 flex flex-col justify-around md:flex-row md:items-center">
       <figure className="flex items-center justify-center my-5 md:flex-1">
@@ -19,7 +26,9 @@ function ProductPage({
         />
       </figure>
       <figcaption className="md:flex-1 my-5 ">
-        <h2 className="font-mont text-3xl text-blue-300 mb-3">{product.title}</h2>
+        <h2 className="font-mont text-3xl text-blue-300 mb-3">
+          {product.title}
+        </h2>
         <p className="font-Agbalumo text-xl mb-3">{product.category}</p>
         <p className="font-mont text-justify mb-2">{product.description}</p>
         <p className="mb-2">
@@ -29,7 +38,7 @@ function ProductPage({
         <p className="mb-2 font-noto">
           {product.rating.rate} stars | {product.rating.count} reviews
         </p>
-        <AddToCart product={product}></AddToCart>
+        <AddToCart type="TOGGLE" product={product}></AddToCart>
       </figcaption>
     </section>
   );
@@ -38,7 +47,7 @@ function ProductPage({
 export default ProductPage;
 
 export const getStaticPaths = async () => {
-  const paths = [];
+  const paths: ParamType[] = [];
 
   for (let i = 1; i <= data.numberOfProducts; i++) {
     paths.push({
@@ -52,7 +61,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: ParamType) => {
   const { id } = params;
 
   const productURL = `${data.url.rooturl}${data.url.products}/${id}`;

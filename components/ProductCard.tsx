@@ -2,24 +2,20 @@ import { Product } from "../types/products.type";
 import Image from "next/image";
 import Link from "next/link";
 import data from "../data";
-import useCart from "../store/hooks/useCart";
-import { useEffect, useState } from "react";
-
+// import useCart from "../store/hooks/useCart";
+// import { useEffect, useState } from "react";
+import AddToCart from "./AddToCart";
 type ProductCardProps = {
   product: Product;
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const [addButtonDisabled, setAddButtonDisabled] = useState(true);
-  const { addToCart, isInCart, items, cartIsfull } = useCart();
+  // const { isInCart, items, cartIsfull } = useCart();
+  // const [addButtonDisabled, setAddButtonDisabled] = useState(true);
 
-  useEffect(() => {
-    setAddButtonDisabled(isInCart(product) || cartIsfull);
-  }, [product, isInCart, items, cartIsfull]);
-
-  const handleAddToCart = () => {
-    addToCart(product);
-  };
+  // useEffect(() => {
+  //   setAddButtonDisabled(isInCart(product) || cartIsfull);
+  // }, [product, isInCart, items, cartIsfull]);
 
   return (
     <div className="font-mont p-2 m-3 md:m-12 flex-auto flex flex-col items-center justify-center ">
@@ -38,14 +34,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           </p>
         </div>
       </Link>
-      <button
-        disabled={addButtonDisabled}
-        className="bg-blue-300 px-14 py-2 my-3 disabled:opacity-25"
-        onClick={handleAddToCart}
-      >
-        {cartIsfull ? "Cart Is Full":"Add To Cart"}
-        
-      </button>
+
+      <AddToCart type={"ADD"} product={product} />
     </div>
   );
 }
