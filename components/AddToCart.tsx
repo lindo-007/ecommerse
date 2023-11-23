@@ -1,44 +1,65 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch } from "redux";
-import styled from "styled-components";
-import { Product, Products } from "../types/products.type";
-import { Store } from "../types/store.type";
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../store/cart";
+import { Product } from "../types/products.type";
+import { useEffect, useState } from "react";
+import useCart from "../store/hooks/useCart";
 
 type AddToCartProps = {
   product: Product;
+  type: "TOGGLE" | "ADD";
 };
-export default function AddToCart({ product }: AddToCartProps) {
-  const dispatch: Dispatch = useDispatch();
 
-  const cartItems: Products = useSelector((store: Store) => store.cart.items);
+export default function AddToCart({ product, type }: AddToCartProps) {
+  const { items, cartIsfull, isInCart, addToCart, removeFromCart } = useCart();
 
-  function isInCart(product: Product) {
-    return cartItems.filter((item) => item?.id === product.id).length > 0;
-  }
+  const [addButtonDisabled, setAddButtonDisabled] = useState(true);
 
-  function handleAddProduct(product: Product) {
-    dispatch({ type: ADD_TO_CART, payload: { product: product } });
-  }
+  const [removeButtonDisabled, setRemoveButtonDisabled] = useState(true);
 
-  function handleRemoveProduct(product: Product) {
-    dispatch({
-      type: REMOVE_FROM_CART,
-      payload: { product: product },
-    });
-  }
-  return (
-    <Cart>
-      <button onClick={() => handleAddProduct(product)}>+</button>
-      add to cart
+  useEffect(() => {
+    setRemoveButtonDisabled(!isInCart(product));
+    setAddButtonDisabled(isInCart(product) || cartIsfull);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items]);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+
+  const handleRemoveFromCart = () => {
+    removeFromCart(product);
+  };
+
+  if (type === "ADD") {
+    return (
       <button
-        disabled={!isInCart(product)}
-        onClick={() => handleRemoveProduct(product)}
+        className="bg-blue-300 w-full py-2 my-3 disabled:opacity-25"
+        onClick={handleAddToCart}
+        disabled={addButtonDisabled}
+      >
+        {cartIsfull
+          ? "Cart Is Full"
+          : isInCart(product)
+          ? "Added"
+          : "Add To Cart"}
+      </button>
+    );
+  }
+
+  return (
+    <div className=" flex items-end">
+      <button
+        className="bg-blue-300 py-3 px-5 my-3 mr-5 disabled:opacity-25 "
+        disabled={cartIsfull}
+        onClick={handleAddToCart}
+      >
+        +
+      </button>
+      <button
+        className="bg-blue-300 py-3 px-5 my-3 disabled:opacity-25 "
+        disabled={removeButtonDisabled}
+        onClick={handleRemoveFromCart}
       >
         -
       </button>
-    </Cart>
+    </div>
   );
 }
-const Cart = styled.div``;

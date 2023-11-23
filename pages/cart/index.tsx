@@ -1,43 +1,45 @@
 "use client";
-
-import React, { useState } from "react";
-import { Products } from "../../types/products.type";
 import CartItem from "../../components/CartItem";
-import { useSelector } from "react-redux";
-import { Store } from "../../types/store.type";
-import styled from "styled-components";
-
-// make currency global
+import { FaShoppingCart } from "react-icons/fa";
+import data from "../../data";
+import useCart from "../../store/hooks/useCart";
 
 export default function Cart() {
-  const cartItems: Products = useSelector((store: Store) => store.cart.items);
-  const [totalCost, setTotalCost] = useState(0);
-
-  function getTotalCost() {
-    setTotalCost(
-      cartItems.reduce((total, item) => total + Number(item.cartQuantity), 0)
-    );
-  }
+  const { items, totalCost, numberOfItems ,cartIsEmpty, cartIsfull} = useCart();
 
   return (
-    <CartWrapper>
-      <h2>cart</h2>
-      {cartItems.length === 0 ? (
-        <div>nothing here</div>
+    <section className="flex flex-col justify-between w-full ">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl text-blue-300 p-5">Cart</h2>
+        {cartIsfull && (
+          <div className="text-red-600 text-2xl p-5"> cart is full</div>
+        )}
+      </div>
+      {cartIsEmpty ? (
+        <div className="flex flex-1 items-center justify-center">
+          <FaShoppingCart size={120} />
+        </div>
       ) : (
         <>
-          {cartItems.map((item) => (
-            <CartItem key={item?.id} product={item} />
-          ))}
-          <p>total = R {totalCost}</p>
+          <section className="flex-1 flex flex-col  mx-4">
+            {items.map((item) => (
+              <CartItem key={item?.id} product={item} />
+            ))}
+          </section>
+          <div className="flex p-5 text-xl text-blue-300 justify-between">
+            <p className="">
+              Total:
+              <span className="text-black">
+                {" " + data.currency}
+                {totalCost.toFixed(2)}
+              </span>
+            </p>
+            <p className="text-black">
+              {numberOfItems} <span>items</span>
+            </p>
+          </div>
         </>
       )}
-    </CartWrapper>
+    </section>
   );
 }
-
-const CartWrapper = styled.section`
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-`;

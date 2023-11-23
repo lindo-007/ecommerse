@@ -1,10 +1,9 @@
-import styled from "styled-components";
-import Categories from "../components/Categories";
+import FeaturedProducts from "../components/FeaturedProducts";
 import DisplayProducts from "../components/Products";
 import { Products } from "../types/products.type";
 import type { InferGetServerSidePropsType } from "next";
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
   const products: Products = await res.json();
 
@@ -15,13 +14,9 @@ export default function Home({
   products,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <HomeContainer>
+    <section className="flex flex-col">
       <DisplayProducts products={products} />
-    </HomeContainer>
+      <FeaturedProducts />
+    </section>
   );
 }
-const HomeContainer = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;

@@ -1,23 +1,20 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import styled from "styled-components";
+import React from "react";
 
-function Layout({ children }) {
+type LayoutProps = {
+  children: React.ReactNode;
+};
+function Layout({ children }: LayoutProps) {
   return (
-    <LayoutWrapper>
+    <section className="flex flex-col  m-auto justify-between min-h-screen">
       <Header />
-      <main>{children}</main>
+      <main className="flex-1 flex justify-center min-w-full xl:min-w-min xl:w-320  mx-auto">
+        {children}
+      </main>
       <Footer />
-    </LayoutWrapper>
+    </section>
   );
 }
-
-const LayoutWrapper = styled.section`
-  min-height:99.5vh ;
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-  justify-content: space-between;
-`;
 
 export default Layout;

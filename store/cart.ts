@@ -9,63 +9,51 @@ const initialState: CartState = {
 };
 
 function addToCart(state: CartState, product: Product) {
-  if (state.items.length < 1) return [{ ...product, cartQuantity: 1 }];
+  const existingItem = state.items.find((item) => item?.id === product.id);
 
-  let newItem = true;
-  const itemsInCart = state.items.map((item) => {
-    if (item?.id === product.id) {
-      newItem = false;
-      return {
-        ...item,
-        cartQuantity: item.cartQuantity + 1,
-      };
-    }
-    return item;
-  });
+  if (existingItem) {
+    const newData = state.items.map((item) =>
+    item?.id === product.id
+    ? { ...item, cartQuantity: item?.cartQuantity! + 1 }
+    : item
+    );
+    Object.assign(state.items, newData);
 
-  if (newItem) {
-    itemsInCart.push({
-      ...product,
-      cartQuantity: 1,
-    });
+    return {
+      ...state,
+      items: newData,
+    };
   }
 
-  return itemsInCart;
+  return {
+    ...state,
+    items: [...state.items, { ...product, cartQuantity: 1 }],
+  };
 }
 
 function removeFromCart(state: CartState, product: Product) {
-  if (state.items.length < 1) return [];
+  const newData = state.items
+  .map((item) =>
+    item?.id === product.id
+      ? { ...item, cartQuantity: item?.cartQuantity! - 1 }
+      : item
+  )
+  .filter((item) => item !== undefined && item.cartQuantity !== 0);
 
-  const itemsInCart = state.items
-    .map((item) => {
-      if (item?.id === product.id) {
-        if (item.cartQuantity === 1) return;
+  Object.assign(state.items, newData);
 
-        return {
-          ...item,
-          cartQuantity: item.cartQuantity - 1,
-        };
-      }
-      return item;
-    })
-    .filter((item) => item !== undefined);
-
-  return itemsInCart;
+  return {
+    ...state,
+    items: newData,
+  };
 }
 
 const cartReducer = (state = initialState, action: CartAction) => {
   switch (action.type) {
     case ADD_TO_CART:
-      return {
-        ...state,
-        items: addToCart(state, action.payload.product),
-      };
+      return addToCart(state, action.payload.product);
     case REMOVE_FROM_CART:
-      return {
-        ...state,
-        items: removeFromCart(state, action.payload.product),
-      };
-
+      return removeFromCart(state, action.payload.product);
     default:
       return state;
   }

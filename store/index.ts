@@ -1,10 +1,35 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, legacy_createStore as createStore } from "redux";
 import cartReducer from "./cart";
+import { persistStore, persistReducer } from "redux-persist";
+import createWebStorage from "redux-persist/lib/storage";
+
+const createNoopStorage = () => {
+  return {
+    getItem(_key: any) {
+      return Promise.resolve(null);
+    },
+    setItem(_key: any, value: any) {
+      return Promise.resolve(value);
+    },
+    removeItem(_key: any) {
+      return Promise.resolve();
+    },
+  };
+};
+
+const storage =
+  typeof window === "undefined" ? createNoopStorage() : createWebStorage;
 
 const rootReducer = combineReducers({
-    cart: cartReducer
-})
+  cart: cartReducer,
+});
 
-const store = createStore(rootReducer)
+const persistConfig = {
+  key: "root",
+  storage,
+};
 
-export default store
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = createStore(persistedReducer);
+export const persistor = persistStore(store);
