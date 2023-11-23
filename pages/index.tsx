@@ -1,3 +1,4 @@
+import FeaturedProducts from "../components/FeaturedProducts";
 import DisplayProducts from "../components/Products";
 import { Products } from "../types/products.type";
 import type { InferGetServerSidePropsType } from "next";
@@ -13,9 +14,9 @@ export default function Home({
   products,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <>
+    <section className="flex flex-col">
       <DisplayProducts products={products} />
-    </>
+      <FeaturedProducts />
+    </section>
   );
 }
-

@@ -2,20 +2,12 @@ import { Product } from "../types/products.type";
 import Image from "next/image";
 import Link from "next/link";
 import data from "../data";
-// import useCart from "../store/hooks/useCart";
-// import { useEffect, useState } from "react";
 import AddToCart from "./AddToCart";
 type ProductCardProps = {
   product: Product;
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
-  // const { isInCart, items, cartIsfull } = useCart();
-  // const [addButtonDisabled, setAddButtonDisabled] = useState(true);
-
-  // useEffect(() => {
-  //   setAddButtonDisabled(isInCart(product) || cartIsfull);
-  // }, [product, isInCart, items, cartIsfull]);
 
   return (
     <div className="font-mont p-2 m-3 md:m-12 flex-auto flex flex-col items-center justify-center ">
