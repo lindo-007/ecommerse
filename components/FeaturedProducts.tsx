@@ -14,7 +14,7 @@ export default function FeaturedProducts() {
 
       <section className="flex overflow-scroll w-screen">
         {products.map((product: Product) => (
-          <div className=" mx-8" key={product.id}>
+          <div className=" mx-7" key={product.id}>
             <ProductCard product={product} />
           </div>
         ))}
