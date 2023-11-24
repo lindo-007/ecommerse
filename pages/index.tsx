@@ -15,8 +15,8 @@ export default function Home({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <section className="flex flex-col">
-      <DisplayProducts products={products} />
       <FeaturedProducts />
+      <DisplayProducts products={products} />
     </section>
   );
 }

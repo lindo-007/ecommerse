@@ -1,34 +1,24 @@
-import useSWR from "swr";
 import ProductCard from "./ProductCard";
 import { Product } from "../types/products.type";
-import { useState } from "react";
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+import useProducts from "../helper/hooks/useProducts";
 
 export default function FeaturedProducts() {
-  const [showfeaturedProducts, setShowfeaturedProducts] = useState(false);
-  const { data, error, isLoading } = useSWR(
-    "https://fakestoreapi.com/products?limit=10",
-    fetcher
-  );
+  const { products, isError, isLoading } = useProducts("/products?limit=10");
 
-  function handleClick() {
-    setShowfeaturedProducts(!showfeaturedProducts);
-  }
-
-  if (error) return <div>failed to load</div>;
+  if (isError) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
 
   return (
-    <>
-      <button onClick={handleClick}>Get More products</button>
-      {showfeaturedProducts && (
-        <section className="flex flex-wrap justify-center">
-          {data.map((product: Product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-        </section>
-      )}
-    </>
+    <div className=" ">
+      <h2 className="text-2xl text-blue-300 p-5">Featured Products</h2>
+
+      <section className="flex overflow-scroll w-screen">
+        {products.map((product: Product) => (
+          <div className=" mx-8" key={product.id}>
+            <ProductCard product={product} />
+          </div>
+        ))}
+      </section>
+    </div>
   );
 }

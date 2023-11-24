@@ -18,7 +18,7 @@ export default function AddToCart({ product, type }: AddToCartProps) {
     setRemoveButtonDisabled(!isInCart(product));
     setAddButtonDisabled(isInCart(product) || cartIsfull);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items]);
+  }, [items,cartIsfull]);
 
   const handleAddToCart = () => {
     addToCart(product);
